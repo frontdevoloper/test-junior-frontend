@@ -1,20 +1,21 @@
 <script setup>
 
-  defineProps({
+  const { data } = defineProps({
     data: {
       type: Object,
       default: {}
     }
-  });
+  }); 
+
 </script>
 
 <template>
   <tr class="table__row row">
-    <td 
-      v-for="item of data"      
-      class="table__data"
-    >
-      {{ item }}
+    <td class="table__data">
+      {{ data.id }}
+    </td>    
+    <td class="table__data">
+      {{ data.name}}
     </td>    
   </tr>
 </template>

@@ -1,11 +1,9 @@
 <script setup>
-
   import { computed, ref } from 'vue';
+  import TableRow from './TableRow.vue';  
   import UButton from '../UButton.vue';
-  import TableRow from './TableRow.vue';
 
   const pageNumber = ref(0);
-  
 
   const { dataArray, sizeElements } = defineProps({  
     dataArray: {
@@ -22,11 +20,7 @@
       required: false,
       default: () => 4
     }
-  });
-
-  const keys = computed(() => {
-    if(dataArray.length) return Object.keys(dataArray[0]);
-  }); 
+});
 
   const paginatedData = computed(() => {
     const start = pageNumber.value * sizeElements;
@@ -46,8 +40,6 @@
   const prevPage = () => {
     pageNumber.value--;
   }
-
-
 </script>
 
 <template>
@@ -57,13 +49,18 @@
       {{ caption }}
     </caption>                
     <thead class="table__header" >
-        <th 
-          v-for="key in keys"
+        <th
           class="table__header-col" 
           scope="col"
         >
-            <span class="table__header-title">{{ key }}</span>                                         
-        </th>            
+            <span class="table__header-title">ID</span>                                         
+        </th>
+        <th
+          class="table__header-col" 
+          scope="col"
+        >
+            <span class="table__header-title">Сущность</span>                                         
+        </th>               
       </thead>
       <tbody class="table__body">
         <table-row
@@ -72,7 +69,7 @@
         :data="data"
         />        
       </tbody>
-    </table>
+    </table>   
     <div class="buttons-paginations">
       <UButton 
         :class="{hoverBtn: pageNumber !== 0}"
@@ -90,7 +87,7 @@
         type="button"
         >
           Next
-      </UButton>
+      </UButton> 
     </div>
   </div>
   
@@ -127,5 +124,6 @@
     margin-top: 1em;
     justify-content: space-between;
   }
+  
   
 </style>

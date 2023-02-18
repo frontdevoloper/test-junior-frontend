@@ -1,9 +1,4 @@
 <script setup>
-
-  // defineProps({
-  //   type: String
-  // });
-
 </script>
 
 <template>
@@ -23,6 +18,11 @@
     border: 1px solid #8D8D8D;
     border-radius: 5px;
     transition: all .6s ease;
+  }  
+
+  .button.selected {
+    background: #092cca;
+    color: #fff
   }
 
   .button.hoverBtn:hover {
@@ -30,8 +30,23 @@
     color: #092cca;
   }
 
-  .button.selected {
-    background: #092cca;
-    color: #fff
+  @keyframes spinner-border {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .btn-spinner {
+    display: inline-block;    
+    vertical-align: -0.125em;
+    border: 0.2em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: .75s linear infinite spinner-border;
+    animation: .75s linear infinite spinner-border;
+  }
+
+  .btn-spinner_hide {
+    display: none;
   }
 </style>

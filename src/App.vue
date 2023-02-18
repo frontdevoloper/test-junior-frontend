@@ -1,9 +1,17 @@
 <script setup>
+  import { onBeforeMount, onUpdated } from 'vue';
   import FormCreationEntity from './components/FormCreationEntity.vue';
   import Table from './components/Table/Table.vue';
   import { useEntityStore } from './stores/EntityStore';
+  import { useAutorizationAmoCRM } from './stores/AuthorizationAmoCRM';
 
+  const authorizationAmoCRM = useAutorizationAmoCRM();
   const entityStore = useEntityStore();
+
+  onBeforeMount(() => {   
+    authorizationAmoCRM.getAccessToken();
+  });  
+   
 </script>
 
 <template>
