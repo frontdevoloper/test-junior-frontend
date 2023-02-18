@@ -7,8 +7,6 @@ import axios from "axios";
 export const useEntityStore = defineStore('entityStore', () => {
   const authorizationAmoCRM = useAutorizationAmoCRM()
 
-  //const getEntitieslead = getApi('leads', authorizationAmoCRM.base_domain, authorizationAmoCRM.access_token);
-  
   const entities = ref([]);
   const entitySelect = ref('');
   const entitySelected = ref(false); 
